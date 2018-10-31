@@ -1,5 +1,5 @@
 <template>
- <div class="swiper"  v-if="list">
+ <div class="swiper"  v-if="list!=''">
   <swiper :options="swiperOption" >
     <swiper-slide v-for="item of list" :key="item.id">
       <img v-bind:src="item.imgUrl"  class="swiper-img">
