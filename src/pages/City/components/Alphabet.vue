@@ -1,6 +1,13 @@
 <template>
   <div class="alphabet">
-    <div class="alphabet-item" v-for="(value, key) of cities" :key="key">{{key}}</div>
+    <div class="alphabet-item"
+     v-for="(value, key) of cities"
+      :key="key"
+      :ref="key"
+       @click="alphaclick"
+       @touchstart="handleTouchStart"
+       @touchmove="handleTouchMove"
+       @touchend="handleTouchEnd">{{key}}</div>
   </div>
 </template>
 
@@ -9,6 +16,23 @@ export default{
   name: 'CityAlphabet',
   props: {
     cities: [Object, Array]
+  },
+  methods: {
+    alphaclick (e) {
+      this.$emit('aclick', e)
+    },
+    handleTouchStart () {
+      console.log(1)
+    },
+    handleTouchMove (e) {
+      /* const aTop = this.$refs['A'][0].offsetTop */
+      console.log(e.touches[0].clientY)
+      console.log(e.touches[0].clientY)
+    },
+    handleTouchEnd () {
+      console.log(3)
+    }
+
   }
 }
 </script>

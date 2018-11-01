@@ -5,14 +5,19 @@
       <div class="button">{{this.nowCity}}</div>
       <div class="citybar">热门城市</div>
       <ul class="hotcitylist">
-        <li class="button border" v-for="item of hotcities" :key="item.id">{{item.name}}
+        <li class="button border"
+         v-for="item of hotcities"
+          :key="item.id">{{item.name}}
         </li>
       </ul>
       <div class="allcity">
         <div v-for="(alpha, key) of cities" :key="key">
-          <div class="citybar">{{key}}</div>
+          <div class="citybar" :ref="key">{{key}}</div>
           <ul>
-            <li v-for="item of alpha" class="cityitem border-bottom" :key="item.id">{{item.name}}</li>
+            <li class="cityitem border-bottom"
+             v-for="item of alpha"
+              :key="item.id"
+              >{{item.name}}</li>
           </ul>
         </div>
       </div>
@@ -26,11 +31,22 @@ export default{
   name: 'CityList',
   props: {
     hotcities: Array,
-    cities: [Array, Object]
+    cities: [Array, Object],
+    achange: String
   },
   data () {
     return {
       nowCity: '北京'
+    }
+  },
+  methods: {
+  },
+  watch: {
+    achange () {
+      /* ref获取后加上[0]，就可以获取DON元素 */
+      const toscroll = this.$refs[this.achange][0]
+      /* better-scroll必须使用DOM元素跳转 */
+      this.scroll.scrollToElement(toscroll)
     }
   },
   mounted () {

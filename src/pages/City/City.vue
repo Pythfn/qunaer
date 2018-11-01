@@ -2,8 +2,8 @@
   <div>
     <city-header></city-header>
     <city-search :cities="cities"></city-search>
-    <city-list :hotcities="hotCities" :cities="cities"></city-list>
-    <city-alphabet :cities="cities"></city-alphabet>
+    <city-list :hotcities="hotCities" :cities="cities" :achange="achange"></city-list>
+    <city-alphabet :cities="cities" @aclick="aclick"></city-alphabet>
   </div>
 
 </template>
@@ -20,7 +20,8 @@ export default {
   data () {
     return {
       hotCities: [],
-      cities: []
+      cities: [],
+      achange: ''
     }
   },
   components: {
@@ -40,6 +41,9 @@ export default {
         this.hotCities = reslist.hotCities
         this.cities = reslist.cities
       }
+    },
+    aclick (e) {
+      this.achange = e.target.innerHTML
     }
   },
   mounted () {
