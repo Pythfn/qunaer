@@ -24,7 +24,8 @@ export default{
   data () {
     return {
       result: '',
-      resultList: []
+      resultList: [],
+      timer: null
     }
   },
   methods: {
@@ -37,13 +38,18 @@ export default{
         this.resultList = []
         return
       }
-      for (let i in this.cities) {
-        for (let j in this.cities[i]) {
-          if ((this.cities[i][j].name).indexOf(this.result) > -1 || (this.cities[i][j].spell).indexOf(this.result) > -1) {
-            this.resultList.push(this.cities[i][j].name)
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
+      this.timer = setTimeout(() => {
+        for (let i in this.cities) {
+          for (let j in this.cities[i]) {
+            if ((this.cities[i][j].name).indexOf(this.result) > -1 || (this.cities[i][j].spell).indexOf(this.result) > -1) {
+              this.resultList.push(this.cities[i][j].name)
+            }
           }
         }
-      }
+      }, 50)
     }
   },
   mounted () {

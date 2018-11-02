@@ -78,6 +78,7 @@ export default{
       height:0.8rem
       text-align:center
       line-height:.8rem
+      box-sizing:border-box
     .allcity
       .cityitem
         width:100%

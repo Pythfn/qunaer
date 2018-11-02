@@ -3,7 +3,7 @@
     <city-header></city-header>
     <city-search :cities="cities"></city-search>
     <city-list :hotcities="hotCities" :cities="cities" :achange="achange"></city-list>
-    <city-alphabet :cities="cities" @aclick="aclick"></city-alphabet>
+    <city-alphabet :cities="cities" @aclick="aclick" @aclick2="aclick2"></city-alphabet>
   </div>
 
 </template>
@@ -44,6 +44,9 @@ export default {
     },
     aclick (e) {
       this.achange = e.target.innerHTML
+    },
+    aclick2 (e) {
+      this.achange = e
     }
   },
   mounted () {
