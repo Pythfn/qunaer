@@ -5,7 +5,9 @@
          :bannertitle="bannertitle"
          :bannerimg="bannerimg"
          :gallarylist="gallarylist"></detail-banner>
-         <detail-list></detail-list>
+         <div class="detail-list">
+           <detail-list :list="detaillist"></detail-list>
+         </div>
     </div>
 </template>
 
@@ -21,7 +23,8 @@ export default {
     return {
       bannerimg: '',
       bannertitle: '',
-      gallarylist: []
+      gallarylist: [],
+      detaillist: []
     }
   },
   components: {
@@ -44,6 +47,7 @@ export default {
         this.bannerimg = list.bannerImg
         this.bannertitle = list.sightName
         this.gallarylist = list.gallaryImgs
+        this.detaillist = list.categoryList
       }
     }
   },
@@ -53,5 +57,6 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-
+  .detail-list
+    height:20rem
 </style>
