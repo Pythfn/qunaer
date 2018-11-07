@@ -6,7 +6,7 @@
     <div class="search-result" v-show="result" ref="wrapper">
       <div>
         <ul>
-          <li class="result-item border-bottom" v-for="(item, index) of resultList" :key="index">{{item}}</li>
+          <li class="result-item border-bottom" v-for="(item, index) of resultList" :key="index" @click="handleChangeCity(item)">{{item}}</li>
           <li class="result-item border-bottom" v-show="!(this.resultList.length)">没有找到数据</li>
         </ul>
       </div>
@@ -29,7 +29,10 @@ export default{
     }
   },
   methods: {
-
+    handleChangeCity (city) {
+      this.$store.dispatch('changeCity', city)
+      this.$router.push('/')
+    }
   },
   watch: {
     result () {

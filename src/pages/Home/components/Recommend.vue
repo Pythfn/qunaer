@@ -1,7 +1,9 @@
 <template>
   <div>
     <ul>
-      <li v-for="(item, index) of list" :key="index">
+      <router-link tag="li"
+      v-for="item of list" :key="item.id"
+        :to="'/detail/' + item.id">
         <div class="li-item border-bottom">
           <img class="li-item-img" v-bind:src="item.imgUrl">
           <div class="li-item-content">
@@ -10,7 +12,7 @@
             <button class="li-item-button">查看详情</button>
           </div>
         </div>
-      </li>
+      </router-link>
     </ul>
     <div class="like-more"><a href="#">查看所有产品</a></div>
   </div>
@@ -38,7 +40,6 @@ export default {
   .li-item
     width:100%
     height:3.16rem
-    overflow:hidden
     display:flex
     padding-left:.2rem
     margin-top:.2rem

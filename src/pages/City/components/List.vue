@@ -2,13 +2,13 @@
   <div class="list" ref="wrapper">
     <div>
       <div class="citybar">当前城市</div>
-      <div class="button">{{this.nowCity}}</div>
+      <div class="button">{{this.$store.state.city}}</div>
       <div class="citybar">热门城市</div>
       <ul class="hotcitylist">
         <li class="button border"
          v-for="item of hotcities"
-          :key="item.id">{{item.name}}
-        </li>
+          :key="item.id"
+           @click="handleChangeCity(item.name)">{{item.name}}</li>
       </ul>
       <div class="allcity">
         <div v-for="(alpha, key) of cities" :key="key">
@@ -17,6 +17,7 @@
             <li class="cityitem border-bottom"
              v-for="item of alpha"
               :key="item.id"
+               @click="handleChangeCity(item.name)"
               >{{item.name}}</li>
           </ul>
         </div>
@@ -34,12 +35,11 @@ export default{
     cities: [Array, Object],
     achange: String
   },
-  data () {
-    return {
-      nowCity: '北京'
-    }
-  },
   methods: {
+    handleChangeCity (city) {
+      this.$store.dispatch('changeCity', city)
+      this.$router.push('/')
+    }
   },
   watch: {
     achange () {
