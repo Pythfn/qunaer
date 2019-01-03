@@ -1,21 +1,4 @@
-# qunaer
+# 去哪儿网简单仿制
 
-> A Vue.js project
+> 一个Vue2.0小demo，仿制了去哪儿网的移动web界面
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
